@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carte de Visite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -26,13 +27,13 @@
             animation: fadeIn 1s ease-in-out;
         }
         .profile-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 15px auto;
-    display: block;
-    border: 3px solid #FFD700;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 15px auto;
+            display: block;
+            border: 3px solid #FFD700;
         }
         .info {
             opacity: 0;
@@ -50,16 +51,30 @@
             text-decoration: none;
             font-weight: bold;
             width: 80%;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
         }
         .button:hover {
             background: #e6c300;
+            transform: scale(1.05);
         }
-        iframe {
-            width: 100%;
-            height: 220px;
-            border-radius: 12px;
-            margin-top: 15px;
+        .button:active {
+            transform: scale(0.95);
+        }
+        #saveContact {
+            position: relative;
+        }
+        #saveContact::after {
+            content: "✔ Contact enregistré !";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #FFD700;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: none;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -79,7 +94,8 @@
         <div class="info">
             <a class="button" href="tel:0787267977">📞 07 87 26 79 77</a>
             <a class="button" href="mailto:commerce@klima-rivair.fr">✉️ commerce@klima-rivair.fr</a>
-            <a class="button" href="#">🌐 www.klima-rivair.fr</a>
+            <a class="button" href="https://www.klima-rivair.fr" target="_blank">🌐 www.klima-rivair.fr</a>
+
         </div>
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.2220591329933!2d1.4128476763032418!3d43.67237925294717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aea5f1e5a6b7d9%3A0x358761d0568f6c13!2s62%20Imp.%20de%20Lespinasse%2C%2031140%20Aucamville%2C%20France!5e0!3m2!1sfr!2sfr!4v1710880000000!5m2!1sfr!2sfr"
@@ -89,8 +105,9 @@
         <a class="button" id="saveContact" href="#">💾 Enregistrer le contact</a>
     </div>
     <script>
-document.getElementById("saveContact").addEventListener("click", function() {
-    const vCardData = `BEGIN:VCARD
+        document.getElementById("saveContact").addEventListener("click", function(event) {
+            event.preventDefault();
+            const vCardData = `BEGIN:VCARD
 VERSION:3.0
 FN:Nicolas Pamies
 ORG:Klima Riv'Air
@@ -101,15 +118,25 @@ URL:http://www.klima-rivair.fr
 ADR;TYPE=work:;;62 impasse de Lespinasse;Aucamville;;31140;France
 END:VCARD`;
 
-    const blob = new Blob([vCardData], { type: "text/vcard" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "contact.vcf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-});
-</script>
+            const blob = new Blob([vCardData], { type: "text/vcard" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "contact.vcf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
 
+            // Afficher le message de confirmation
+            const button = document.getElementById("saveContact");
+            button.textContent = "✔ Contact enregistré !";
+            button.style.background = "#4CAF50";
+            button.style.color = "#fff";
+            setTimeout(() => {
+                button.textContent = "💾 Enregistrer le contact";
+                button.style.background = "#FFD700";
+                button.style.color = "#000";
+            }, 2000);
+        });
+    </script>
 </body>
 </html>
