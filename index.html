@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte de Visite</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #FFD700;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .card {
+            background: linear-gradient(135deg, #111, #222);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            width: 380px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #FFD700;
+            margin: 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            font-weight: bold;
+            color: #000;
+        }
+        .info {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeSlideIn 1s forwards ease-in-out;
+        }
+        .button {
+            background: #FFD700;
+            color: #000;
+            padding: 12px;
+            margin: 12px auto;
+            border-radius: 8px;
+            cursor: pointer;
+            display: block;
+            text-decoration: none;
+            font-weight: bold;
+            width: 80%;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #e6c300;
+        }
+        iframe {
+            width: 100%;
+            height: 220px;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="profile-img">NP</div>
+        <h2>PAMIES Nicolas</h2>
+        <h3>Commercial Sédentaire - Klima Riv'Air</h3>
+        <div class="info">
+            <a class="button" href="tel:0787267977">📞 07 87 26 79 77</a>
+            <a class="button" href="mailto:commerce@klima-rivair.fr">✉️ commerce@klima-rivair.fr</a>
+            <a class="button" href="#">🌐 www.klima-rivair.fr</a>
+        </div>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.2220591329933!2d1.4128476763032418!3d43.67237925294717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aea5f1e5a6b7d9%3A0x358761d0568f6c13!2s62%20Imp.%20de%20Lespinasse%2C%2031140%20Aucamville%2C%20France!5e0!3m2!1sfr!2sfr!4v1710880000000!5m2!1sfr!2sfr"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+        <a class="button" href="contact.vcf" download>💾 Enregistrer le contact</a>
+    </div>
+</body>
+</html>
