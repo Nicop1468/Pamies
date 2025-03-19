@@ -88,5 +88,28 @@
         </iframe>
         <a class="button" href="contact.vcf" download>💾 Enregistrer le contact</a>
     </div>
+    <script>
+function downloadVCard() {
+    const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Nicolas Pamies
+ORG:Klima Riv'Air
+TITLE:Commercial Sédentaire
+TEL;TYPE=cell:0787267977
+EMAIL:commerce@klima-rivair.fr
+URL:http://www.klima-rivair.fr
+ADR;TYPE=work:;;62 impasse de Lespinasse;Aucamville;;31140;France
+END:VCARD`;
+
+    const blob = new Blob([vCardData], { type: "text/vcard" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "contact.vcf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>
+
 </body>
 </html>
