@@ -86,10 +86,10 @@
             allowfullscreen=""
             loading="lazy">
         </iframe>
-        <a class="button" href="contact.vcf" download>💾 Enregistrer le contact</a>
+        <a class="button" id="saveContact" href="#">💾 Enregistrer le contact</a>
     </div>
     <script>
-function downloadVCard() {
+document.getElementById("saveContact").addEventListener("click", function() {
     const vCardData = `BEGIN:VCARD
 VERSION:3.0
 FN:Nicolas Pamies
@@ -108,7 +108,7 @@ END:VCARD`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-}
+});
 </script>
 
 </body>
