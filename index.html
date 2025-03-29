@@ -1,141 +1,36 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carte de Visite</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #000;
-            --text-color: #FFD700;
-            --card-bg: linear-gradient(135deg, #111, #222);
-        }
-        @media (prefers-color-scheme: light) {
-            :root {
-                --bg-color: #fff;
-                --text-color: #000;
-                --card-bg: linear-gradient(135deg, #ddd, #eee);
-            }
-        }
-        html, body {
-            height: 100%;
-            min-height: 100vh;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            text-align: center;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            padding: 20px;
-        }
-        .card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-            max-width: 90vw;
-            width: 380px;
-            animation: fadeIn 1s ease-in-out;
-        }
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 15px auto;
-            display: block;
-            border: 3px solid var(--text-color);
-        }
-        .button {
-            background: var(--text-color);
-            color: var(--bg-color);
-            padding: 12px;
-            margin: 12px auto;
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            width: 80%;
-            transition: background 0.3s, transform 0.2s;
-        }
-        .button i {
-            font-size: 18px;
-        }
-        .button:hover {
-            background: #e6c300;
-            transform: scale(1.05);
-        }
-        .button:active {
-            transform: scale(0.95);
-        }
-        iframe {
-            width: 100%;
-            height: 220px;
-            border-radius: 12px;
-            margin-top: 15px;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
+    <title>Klima3D V3.2 - Test Final</title>
+    <link rel="stylesheet" href="style.css">
+    <style>canvas { background: #ffffff; display: block; margin: auto; }</style>
 </head>
 <body>
-    <div class="card">
-        <img src="ton-image.jpg" alt="Photo de Nicolas Pamies" class="profile-img">
-        <h2>PAMIES Nicolas</h2>
-        <h3>Commercial Sédentaire - Klima Riv'Air</h3>
-        <a class="button" href="tel:0787267977">
-            <i class="fa-solid fa-phone"></i> 07 87 26 79 77
-        </a>
-        <a class="button" href="mailto:commerce@klima-rivair.fr">
-            <i class="fa-solid fa-envelope"></i> commerce@klima-rivair.fr
-        </a>
-        <a class="button" href="https://www.klima-rivair.fr" target="_blank">
-            <i class="fa-solid fa-globe"></i> www.klima-rivair.fr
-        </a>
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.2220591329933!2d1.4128476763032418!3d43.67237925294717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aea5f1e5a6b7d9%3A0x358761d0568f6c13!2s62%20Imp.%20de%20Lespinasse%2C%2031140%20Aucamville%2C%20France!5e0!3m2!1sfr!2sfr!4v1710880000000!5m2!1sfr!2sfr"
-            allowfullscreen=""
-            loading="lazy">
-        </iframe>
-        <a class="button" id="saveContact" href="#">
-            <i class="fa-solid fa-download"></i> Enregistrer le contact
-        </a>
-    </div>
-    <script>
-        document.getElementById("saveContact").addEventListener("click", function() {
-            fetch("ton-image.jpg")
-                .then(response => response.blob())
-                .then(blob => {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(blob);
-                    reader.onloadend = function () {
-                        const base64Data = reader.result.split(",")[1];
-                        const vCardData = `BEGIN:VCARD\nVERSION:3.0\nN:Pamies;Nicolas\nFN:Nicolas Pamies\nORG:Klima Riv'Air\nTITLE:Commercial Sédentaire\nTEL;TYPE=cell:0787267977\nEMAIL:commerce@klima-rivair.fr\nURL:http://www.klima-rivair.fr\nADR;TYPE=work:;;62 impasse de Lespinasse;Aucamville;;31140;France\nPHOTO;ENCODING=b;TYPE=JPEG:${base64Data}\nEND:VCARD`;
-                        const vCardEncoded = encodeURIComponent(vCardData);
-                        const vCardBlob = `data:text/vcard;charset=utf-8,${vCardEncoded}`;
-                        const link = document.createElement("a");
-                        link.href = vCardBlob;
-                        link.download = "contact.vcf";
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                    };
-                })
-                .catch(error => console.error("Erreur lors du chargement de l'image :", error));
-        });
-    </script>
+    <h1>Klima3D - Plénum 3D V3.2</h1>
+    <form id="plenumForm">
+        <label>Largeur (mm): <input type="number" id="largeur" value="600"></label><br>
+        <label>Hauteur (mm): <input type="number" id="hauteur" value="300"></label><br>
+        <label>Profondeur (mm): <input type="number" id="profondeur" value="400"></label><br>
+        <label>Nombre de piquages: <input type="number" id="nbPiquages" value="3"></label><br>
+        <label>Ø Piquages (mm): <input type="number" id="diametrePiquage" value="125"></label><br>
+        <label>Position des piquages:
+            <select id="positionPiquages">
+                <option value="axial">Axiaux</option>
+                <option value="lateral">Latéraux</option>
+            </select>
+        </label><br>
+        <label>GSIP:
+            <select id="gsip">
+                <option value="GSIP25">GSIP25</option>
+                <option value="GSIP50">GSIP50</option>
+            </select>
+        </label><br><br>
+    </form>
+    <div id="scene-container" style="width: 100%; height: 500px;"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
