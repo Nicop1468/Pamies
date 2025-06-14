@@ -1,36 +1,111 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Klima3D V3.2 - Test Final</title>
-    <link rel="stylesheet" href="style.css">
-    <style>canvas { background: #ffffff; display: block; margin: auto; }</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Le Talent – Fiche Produit</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      background-color: #f7f7f7;
+      color: #222;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px 20px;
+      background: white;
+      box-shadow: 0 0 12px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      margin-top: 40px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      color: #c10000;
+      font-weight: bold;
+    }
+
+    .payment {
+      color: #007e33;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      margin-top: 30px;
+      line-height: 1.7;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .badge {
+      background: #ffe9d2;
+      padding: 12px;
+      border-left: 4px solid orange;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .offer {
+      background: #e6f9ea;
+      padding: 12px;
+      border-left: 4px solid #00aa55;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 30px;
+      background: #007e33;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .cta-button:hover {
+      background: #006326;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Klima3D - Plénum 3D V3.2</h1>
-    <form id="plenumForm">
-        <label>Largeur (mm): <input type="number" id="largeur" value="600"></label><br>
-        <label>Hauteur (mm): <input type="number" id="hauteur" value="300"></label><br>
-        <label>Profondeur (mm): <input type="number" id="profondeur" value="400"></label><br>
-        <label>Nombre de piquages: <input type="number" id="nbPiquages" value="3"></label><br>
-        <label>Ø Piquages (mm): <input type="number" id="diametrePiquage" value="125"></label><br>
-        <label>Position des piquages:
-            <select id="positionPiquages">
-                <option value="axial">Axiaux</option>
-                <option value="lateral">Latéraux</option>
-            </select>
-        </label><br>
-        <label>GSIP:
-            <select id="gsip">
-                <option value="GSIP25">GSIP25</option>
-                <option value="GSIP50">GSIP50</option>
-            </select>
-        </label><br><br>
-    </form>
-    <div id="scene-container" style="width: 100%; height: 500px;"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/controls/OrbitControls.min.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+
+<div class="container">
+  <h1>🏆 Le Talent</h1>
+  <div class="subtitle">L’accessoire indispensable du tireur de ball-trap</div>
+
+  <div class="price">Prix : 9 990 € TTC</div>
+  <div class="payment">💳 Paiement en 10x sans frais disponible</div>
+
+  <a href="#acheter" class="cta-button">Acheter en 10x sans frais</a>
+
+  <div class="section">
+    <p>Tu rates plus que tu ne touches ? Les plateaux rient quand ils te voient arriver ?<br>
